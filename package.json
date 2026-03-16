@@ -2,6 +2,19 @@
   "name": "next-js-react-tutorial-1sem2026",
   "version": "0.1.0",
   "private": true,
+  "description": "<<<<<<< HEAD\r This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "homepage": "https://github.com/ArthurTiso/web3_repo#readme",
+  "bugs": {
+    "url": "https://github.com/ArthurTiso/web3_repo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurTiso/web3_repo.git"
+  },
+  "license": "ISC",
+  "author": "arthurtiso",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -13,32 +13,12 @@ export default function Home() {
         <main>
           <h1>Home</h1>
           <p>Conteúdo da página Home</p>
-          <Image
-            src="img/bot.svg"
-            alt="Bot"
-            width={200}
-            height={200}
-          />
+         
           <div style={styles.users}>
             <CardUser
-              avatar="https://github.com/renancavichi.png"
-              name="Renan Cavichi"
-              email="renancavichi@gmail.com"
-            />
-            <CardUser
-              avatar="https://github.com/maria.png"
-              name="Maria Silva"
-              email="mariasilva@gmail.com"
-            />
-            <CardUser
-              avatar="https://github.com/joaoroberto.png"
-              name="João Roberto"
-              email="joaoroberto@gmail.com"
-            />
-            <CardUser
-              avatar="https://github.com/camila.png"
-              name="Camila Santos"
-              email="camilasantos@gmail.com"
+              avatar="https://github.com/ArthurTiso.png"
+              name="ArthurTiso"
+              email="arthurdemorais2012@gmail.com"
             />
           </div>
           
@@ -57,7 +37,7 @@ const styles = {
   },
   users: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     gap: 20
   }
 };

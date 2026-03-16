@@ -9,7 +9,7 @@ export default function Sidebar() {
 
 const styles = {
   container: {
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#222A68",
     padding: 20,
     width: 250,
     height: "90vh",
