@@ -15,10 +15,18 @@ export default function Home() {
           <div style={styles.products}>
             <CardProduct
             photo="https://assets.pokemon.com/static-assets/content-assets/cms2-pt-br/img/cards/web/ME01/ME01_PT-BR_60.png"
-           name = "Produto 1"
+           name = "Gardevoir EX"
            category = "Coisas lindas"
            price={199.99}
            ></CardProduct>
+
+      <CardProduct
+            photo="https://pocket.pokemongohub.net/_next/image?url=%2Ftcg-pocket%2Fcards%2Fa4b%2Fwebp%2F357.webp&w=640&q=75"
+           name = "Gardevoir"
+           category = "Coisas lindas"
+           price={9.99}
+           />
+
           </div>
         </main>
       </section>
@@ -33,9 +41,10 @@ const styles = {
     gap: 20,
     padding: 20,
   },
-  products: {
+ products: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 20
   }
 };
