@@ -12,7 +12,7 @@ export default function Logo() {
         height={40}
       />{" "}
       {/* Usando a classe do CSS Module para estilizar a imagem */}
-      <h1 className={styles.logo}>Renan Cavichi</h1>
+      <h1 className={styles.logo}>Arthur</h1>
     </div>
   );
 }

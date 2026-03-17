@@ -2,14 +2,6 @@
 
 export default function CardUser({ avatar, name, email }){
 
-    // const props = {
-    //      avatar: "https://github.com/renancavichi.png",
-    //      name: "Renan Cavichi",
-    //      email: "renancavichi@gmail.com"
-    // }
-
-    // const { avatar, name, email } = props
-
 
     return (
         <div style={styles.container}>

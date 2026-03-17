@@ -39,11 +39,11 @@ const styles = {
     price: {
         fontSize: 14,
         fontWeight: "bold",
-        color: "#005f05"
+        color: "#02c70c"
     },
     category: {
         fontSize: 14,
-        color: "#4b4b4b"
+        color: "#95b8d8"
     },
     textContainer: {
         display: "flex",
