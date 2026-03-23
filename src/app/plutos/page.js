@@ -1,7 +1,6 @@
 import DogCard from "../../components/DogCard";
 import styles from "./page.module.css";
 
-
 export default function Plutos() {
   return (
      <div className={styles.container}>
