@@ -1,34 +1,30 @@
 'use client';
-
-import { useState } from "react";
+import CardUser from "@/components/CardUser";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import { useEffect, useState } from "react";
+export default function Home() {
 
-export default function SignUp() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState([]);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [avatar, setAvatar] = useState("");
+  useEffect(() => {
 
-    const handleSubmit = async (e) => {
-    e.preventDefault()
-    const response = await fetch('http://localhost:3333/user',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({name, email, pass, avatar})
-    })
-    if(response.ok){
-      const data = await response.json();
-      console.log(data);
-    } else{
-      const data = await response?.json();
-      console.error('Erro ao criar conta', data);
+    const getUsers = async () => {
+      const response = await fetch('http://localhost:3333/user')
+      if(response.ok){
+        const data = await response.json();
+        console.log(data);
+        setUsers(data.users);
+      } else{
+        const data = await response?.json();
+        console.error('Erro ao buscar usuários', data);
+      }
     }
-  }
+    getUsers()
+    setIsLoading(false)
+  }, [])
 
   return (
     <div>
@@ -36,19 +32,24 @@ export default function SignUp() {
       <section style={styles.section}>
         <Sidebar />
         <main>
-          <h1>Cadastre-se</h1>
-          <p>Preencha o formulário abaixo para criar sua conta:</p>
-          <form style={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor="name">Nome:</label>
-            <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} style={styles.textInput} />
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} style={styles.textInput} />
-            <label htmlFor="password">Senha:</label>
-            <input type="password" id="password" name="pass" value={pass} onChange={(e) => setPass(e.target.value)} style={styles.textInput} />
-            <label htmlFor="avatar">Avatar:</label>
-            <input type="text" id="avatar" name="avatar" value={avatar} onChange={(e) => setAvatar(e.target.value)} style={styles.textInput} />
-            <button type="submit">Cadastrar</button>
-          </form>
+          <h1>Home</h1>
+          <p>Conteúdo da página Home</p>
+          <div style={styles.container}>
+        </div>
+          <div style={styles.users}>
+            {isLoading ? <p>Carregando...</p> : 
+              users.map(user => 
+                <CardUser 
+                  key={user.id}
+                  id={user.id}
+                  avatar={user.avatar}
+                  name={user.name}
+                  email={user.email}
+                />
+              )
+            }
+          </div>
+          
         </main>
       </section>
       <Footer />
@@ -62,17 +63,9 @@ const styles = {
     gap: 20,
     padding: 20,
   },
-  form: {
+  users: {
     display: "flex",
     flexDirection: "column",
-    gap: 5,
-    width: 300,
-    marginTop: 30 
-  },
-  textInput: {
-    padding: 6,
-    marginBottom: 4,
-    border: "1px solid #CCC",
-    borderRadius: 6
+    gap: 20
   }
 };
