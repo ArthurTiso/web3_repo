@@ -1,22 +1,17 @@
-import { FaTrashAlt, FaUserEdit  } from "react-icons/fa";
-import { useState } from "react";
+import { FaTrashAlt, FaUserEdit  } from "react-icons/fa"
+import { useState } from "react"
+import { useUserStore } from "@/stores/userStore"
 
-export default function CardUser({ id, avatar, name, email }){
+export default function CardUser({ id, avatar, name, email }) {
 
-    // const props = {
-    //      avatar: "https://github.com/renancavichi.png",
-    //      name: "Renan Cavichi",
-    //      email: "renancavichi@gmail.com"
-    // }
+      const [modal, setModal] = useState(false)
 
-    // const { avatar, name, email } = props
+      const [nameUser, setNameUser] = useState(name)
+      const [emailUser, setEmailUser] = useState(email)
+      const [passUser, setPassUser] = useState("")
+      const [avatarUser, setAvatarUser] = useState(avatar)
 
-      const [modal, setModal] = useState(false);
-
-      const [nameUser, setNameUser] = useState(name);
-      const [emailUser, setEmailUser] = useState(email);
-      const [passUser, setPassUser] = useState("");
-      const [avatarUser, setAvatarUser] = useState(avatar);
+    const { users, updateUsers } = useUserStore()
 
     const handleDelete = async () => {
         const response = await fetch(`http://localhost:3333/user/${id}`, {
@@ -26,6 +21,8 @@ export default function CardUser({ id, avatar, name, email }){
          console.log(data);
         if(response.ok){
             alert("Usuário deletado com sucesso!");
+            const usersUpdated = users.filter(user => user.id !== id);
+            updateUsers(usersUpdated);
         } else{
             alert("Erro ao deletar usuário: ")
         }
@@ -49,18 +46,18 @@ export default function CardUser({ id, avatar, name, email }){
         console.log(data);
         if(response.ok){
             alert("Usuário atualizado com sucesso!");
-            const userUpdated = users.map(user =>  {
+            const usersUpdated = users.map(user => {
                 if(user.id === id){
                     return {
                         ...user,
                         name: nameUser,
                         email: emailUser,
                         avatar: avatarUser
-                     }
+                    }
                 }
-                 return user;
+                return user;
             })
-            setUsers(userUpdated);
+            setUsers(usersUpdated);
             setModal(false);
         } else{
             alert("Erro ao atualizar usuário: ")
@@ -84,7 +81,6 @@ export default function CardUser({ id, avatar, name, email }){
                 <p>{email}</p>
             </div> 
         </div>
-
         {modal && (
             <div style={styles.modal}>
                 <div style={styles.content}>
